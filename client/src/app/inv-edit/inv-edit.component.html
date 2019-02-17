@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>
+      Edit Inventory Item
+    </span>
+    <span class="col-md-9">
+      <button mat-raised-button class="bg-white float-right" (click)="closeDialogRef()">
+        <mat-icon>
+          close
+        </mat-icon>
+        <span>
+          Close
+        </span>
+      </button>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="col-md-12 p-5">
+  <form [formGroup]="editInv" class="d-block mx-auto col-md-6">
+    <mat-form-field class="col-md-12">
+      <input matInput placeholder="Item Id#" formControlName="iid" [value]="injectedData" />
+    </mat-form-field>
+    <mat-form-field class="col-md-12">
+      <input matInput placeholder="Name" formControlName="name"  />
+    </mat-form-field>
+    <mat-form-field class="col-md-12">
+      <input matInput placeholder="Price" type="number" min="0" formControlName="price"  />
+    </mat-form-field>
+    <mat-form-field class="col-md-12">
+      <input matInput placeholder="Quantity"  type="number" min="0" formControlName="quantity"  />
+    </mat-form-field>
+    <br>
+    <br>
+    <button mat-raised-button color="accent" class="col-md-6 d-block mx-auto p-2" (click)="editInvItem()">
+      <mat-icon>
+        done
+      </mat-icon>
+      <span class="ml-2">
+        Edit
+      </span>
+    </button>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+@keyframes dot1 {
+    0% { opacity: 0 }
+    24.99% { opacity: 0 }
+    25% { opacity: 1 }
+    100% {opacity: 1}
+}
+@keyframes dot2 {
+    0% { opacity: 0 }
+    49.99% { opacity: 0 }
+    50% { opacity: 1 }
+    100% {opacity: 1}
+}
+@keyframes dot3 {
+    0% { opacity: 0 }
+    74.99% { opacity: 0 }
+    75% { opacity: 1 }
+    100% {opacity: 1}
+}
+.dot-1 {
+    animation: dot1;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+}
+.dot-2 {
+    animation: dot2;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+}
+.dot-3 {
+    animation: dot3;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+}

@@ -1,0 +1,122 @@
+<div class="container p-3 col-md-10">
+  <div class="p-0 card rounded shadow h-360">
+    <mat-toolbar color="accent">
+      <mat-toolbar-row>
+        <div class="col-md-2">
+          Inventory
+        </div>
+        <div class="col-md-10">
+          <button mat-mini-fab class="bg-white text-dark float-right" (click)="addInvItem()">
+            <mat-icon>
+              add
+            </mat-icon>
+          </button>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="font-weight-bold text-dark p-3">
+      <div class="p-1 pl-5 pr-5 col-md-12">
+        <div class="col-md-2 border d-inline-block text-center">
+          ID
+        </div>
+        <div class="col-md-4 border d-inline-block text-center">
+          Name
+        </div>
+        <div class="col-md-2 border d-inline-block text-center">
+          Quantity
+        </div>
+        <div class="col-md-2 border d-inline-block text-center">
+          Price
+        </div>
+      </div>
+    </div>
+    <div class="p-3 vertical-scroll">
+      <div *ngIf='invArr.length === 0' class="text-center">
+        There are no items in the inventory <span class="text-primary font-weight-warning ml-4 mr-4">OR</span> items
+        couldn't be retreived.
+      </div>
+      <div *ngFor="let i of invArr" class="p-1 pl-5 pr-5 col-md-12">
+        <div class="col-md-2 d-inline-block text-center p-2 inv-{{i.iid}}-component">
+          {{i.iid}}
+        </div>
+        <div class="col-md-4 d-inline-block text-center p-2 inv-{{i.iid}}-component">
+          {{i.name}}
+        </div>
+        <div class="col-md-2 d-inline-block text-center p-2 inv-{{i.iid}}-component">
+          {{i.quantity}}
+        </div>
+        <div class="col-md-2 d-inline-block text-center p-2 inv-{{i.iid}}-component">
+          {{i.price}}
+        </div>
+        <div class="col-md-2 d-inline-block p-2 inv-{{i.iid}}-component">
+          <button mat-mini-fab color="accent" class="vertical-align-middle" (click)="editInvItem(i.iid)">
+            <mat-icon>
+              edit
+            </mat-icon>
+          </button>
+          <button mat-mini-fab color="primary" class="vertical-align-middle ml-2" (click)="deleteInvItem(i.iid)">
+            <mat-icon>
+              delete
+            </mat-icon>
+          </button>
+        </div>
+        <mat-divider class="inv-{{i.iid}}-component"></mat-divider>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container p-3 col-md-10">
+  <div class="p-0 card rounded shadow h-360">
+    <mat-toolbar color="accent">
+      <mat-toolbar-row>
+        <div class="col-md-2">
+          Sales
+        </div>
+        <div class="col-md-10">
+          <button mat-mini-fab class="bg-white text-dark float-right" (click)="makeASale()">
+            <mat-icon>
+              add
+            </mat-icon>
+          </button>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="font-weight-bold text-dark p-3">
+      <div class="p-1 pl-5 pr-5 col-md-12">
+        <div class="col-md-2 border d-inline-block text-center">
+          Sale ID
+        </div>
+        <div class="col-md-3 border d-inline-block text-center">
+          Receipt
+        </div>
+        <div class="col-md-3 border d-inline-block text-center">
+          Total
+        </div>
+        <div class="col-md-4 border d-inline-block text-center">
+          Date / Time
+        </div>
+      </div>
+    </div>
+    <div class="p-3 vertical-scroll">
+      <div *ngIf='salesArr.length === 0' class="text-center">
+        There haven't been any sales made yet <span class="text-primary font-weight-warning ml-4 mr-4">OR</span> sales
+        couldn't be retreived.
+      </div>
+      <div *ngFor="let s of salesArr" class="p-1 pl-5 pr-5 col-md-12">
+        <div class="col-md-2 d-inline-block text-center p-2 sale-{{s.sid}}-component">
+          {{s.sid}}
+        </div>
+        <div class="col-md-3 d-inline-block text-info cursor-pointer text-center p-2 sale-{{s.sid}}-component" (click)="viewReceipt(s.sid)">
+          <a>Click to view Receipt</a>
+        </div>
+        <div class="col-md-3 d-inline-block text-center p-2 sale-{{s.sid}}-component">
+          {{s.total}}
+        </div>
+        <div class="col-md-4 d-inline-block text-center p-2 sale-{{s.sid}}-component">
+          {{s.time}}
+        </div>
+        <mat-divider class="sale-{{s.sid}}-component"></mat-divider>
+      </div>
+    </div>
+  </div>
+</div>

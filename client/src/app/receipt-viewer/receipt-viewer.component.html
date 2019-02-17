@@ -1,0 +1,65 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>
+      Receipt Viewer
+    </span>
+    <span class="col-md-8">
+      <button mat-raised-button class="bg-white float-right" (click)="closeDialogRef()">
+        <mat-icon>
+          close
+        </mat-icon>
+        <span>
+          Close
+        </span>
+      </button>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="col-md-12 p-3">
+  <div *ngIf="injectedData.length === 0">
+    Cannot retreive Receipt. Please contact your administrator.
+  </div>
+  <div *ngIf="injectedData.length !== 0 && receipt.length < 1">
+    <span>
+      Retreiving receipt data
+    </span>
+    <app-loading-dots></app-loading-dots>
+  </div>
+  <div *ngIf="injectedData.length !== 0 && receipt.length !== 0">
+    <div>
+      Sale ID# {{receipt[0].sid}}
+    </div>
+    <small>
+      Time: {{receipt[0].time}}
+    </small>
+    <div class="text-right text-success p-2">
+      Total: {{receipt[0].total}}
+    </div>
+    <div class="h-75 vertical-scroll">
+      <div class="card col-md-12 p-0" *ngFor="let sold of receipt[0].receipt">
+        <div class="p-2">
+          <div class="text-info">
+            {{sold.product.name}}
+          </div>
+          <div>
+            <b>ID</b>: {{sold.product.iid}},
+            <b>Stock remainging</b>: {{sold.product.quantity}},
+          </div>
+          <div>
+            <b>Selling Price</b>: PKR {{sold.cost/sold.quantity}},
+          </div>
+        </div>
+        <div class="row m-0 p-0 col-md-12">
+          <div class="col-md-6 d-inline-block text-white bg-info text-center">
+            <small>sold</small>
+            {{sold.quantity}}
+          </div>
+          <div class="col-md-6 d-inline-block text-white bg-success text-center">
+            <small>Cost</small>
+            {{sold.cost}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

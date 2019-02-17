@@ -1,0 +1,114 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>
+      New Sales Receipt
+    </span>
+    <span class="col-md-10">
+      <button mat-raised-button class="bg-white float-right" (click)="closeDialogRef()">
+        <mat-icon>
+          close
+        </mat-icon>
+        <span>
+          Close
+        </span>
+      </button>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="col-md-12 p-3 sales-inv-outer-container row m-0 overflow-hidden">
+  <div class="col-md-6 d-inline-block p-1 h-100">
+    <div class="card p-0 rounded shadow h-100">
+      <mat-toolbar color="accent">
+        <span>Inventory Items</span>
+      </mat-toolbar>
+      <div class="col-md-12 p-0 h-4rem">
+        <button class="col-md-1 h-100 d-inline-block border-0 text-secondary bg-transparent p-0">
+          <mat-icon class="vertical-align-middle">
+            search
+          </mat-icon>
+        </button>
+        <div class="col-md-11 d-inline-block p-1">
+          <!-- <mat-form-field> -->
+            <!-- <input matInput placeholder="Search item by Name" /> -->
+            <input #invSearch placeholder="Search item by Name" class="p-1 pl-4 pr-4 border-0 vertical-align-middle" (input)="sortInvItems(invSearch)" />
+          <!-- </mat-form-field> -->
+        </div>
+      </div>
+      <div class="vertical-scroll p-2">
+        <div *ngFor="let i of showInvItems; let it = index" class="bg-info text-white cursor-pointer sales-inv-item-card card mb-1 p-2 rounded">
+          <div class="row d-block">
+            <div class="d-inline-block col-md-10">
+              <div class="font-weight-bold d-inline-block col-md-9 vertical-align-top">
+                {{i.name}}
+              </div>
+              <div class="d-inline-block col-md-3 text-right">
+                <small>
+                  PKR {{i.price}}
+                </small>
+                <small>
+                  <span class="font-weight-bold">Stock</span>: {{i.quantity}}
+                </small>
+              </div>
+            </div>
+            <div class="float-right d-inline-block col-md-2">
+              <button #d{{i.iid}} mat-mini-fab class="bg-white float-right text-dark" (click)="addToList(it, 'd'+i.iid)">
+                <mat-icon>
+                  navigate_next
+                </mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 d-inline-block p-1 h-100">
+    <div class="card p-0 rounded shadow h-75">
+      <mat-toolbar color="accent">
+        <span>Sales list</span>
+      </mat-toolbar>
+      <div class="vertical-scroll p-2">
+        <div *ngFor="let l of itemsList; let it = index" class="cursor-pointer sales-inv-item-card card mb-1 p-2 rounded">
+          <div class="row d-block p-1 pl-3 pr-3">
+            <div class="d-inline-block col-md-10 font-weight-bold text-info">
+              {{l.name}}
+            </div>
+            <div class="d-inline-block col-md-1">
+              <button mat-mini-fab color="primary" (click)="removeFromList(it)">
+                <mat-icon>
+                  close
+                </mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="d-inline-block col-md-6">
+              Stock: {{l.quantity}}
+            </div>
+            <div class="d-inline-block col-md-6 input">
+              <mat-form-field>
+                <input #inp{{l.iid}} id="inp{{l.iid}}" matInput placeholder="Quantity" type="number" min="0" max="{{l.quantity}}"
+                  autocomplete="off" (input)="changeBill(it, 'inp'+l.iid)" autofocus="true" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card p-0 col-md-12 row m-0 rounded shadow h-25">
+      <div class="col-md-6 d-inline-block p-1 pt-3 vertical-align-middle mt-2">
+        <h6 class="text-success text-center">
+          <small>Total</small>
+        </h6>
+        <h4 class="text-success text-center">
+          PKR {{totalBill}}
+        </h4>
+      </div>
+      <div class="col-md-6 d-inline-block wb-info bg-info text-white cursor-pointer p-3 h-100 flex-fill vertical-align-middle" (click)="generateSale()">
+        <h2 class="vertical-align-middle text-center mt-3">
+          Sell
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>

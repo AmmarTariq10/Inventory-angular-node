@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    src: url('./assets/fonts/proximaNovaLight.ttf');
+    font-family: proximaNova;
+}
+
+*, button, *:focus, *:active {
+    outline: none!important;
+    -webkit-touch-callout: none!important;
+    user-select: none!important;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Helvetica Neue", Roboto, "Helvetica Neue", sans-serif; }
+
+html, body, span, div {
+    font-family: proximaNova!important;
+}
+
+.vertical-scroll{
+    overflow-y: auto!important;
+    overflow-x: hidden!important;
+}
+
+.h-360 {
+    max-height: 360px;
+    height: 360px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: rgba(220,220,220,0.9);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: #3f51b5;
+  border-radius: 25px;
+}
+
+.vertical-align-middle {
+    vertical-align: middle!important;
+}
+
+mat-dialog-container {
+    padding: 0px!important;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.wb-info {
+    transition: background-color 300ms;
+}
+.wb-info:hover {
+    background-color: #15c5e1!important;
+}
+.wb-info:focus, .wb-info:active {
+    background-color: #117f91!important;
+}
+.cdk-overlay-pane{
+    max-width: 100%!important;
+}
+.vertical-align-top{
+    vertical-align: top!important;
+}
+.cdk-overlay-dark-backdrop{
+    background: rgba(0,0,0,0.62)!important;
+}
