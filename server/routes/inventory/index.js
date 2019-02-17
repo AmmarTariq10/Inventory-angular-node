@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const config = require('../db/db-config') // db config
 const defaultRes = {
     error: false,
     message: 200
@@ -15,12 +16,7 @@ function setMsgBody(useBody, msgBody) {
 }
 
 module.exports = function (app) {
-    const mysqlObject = mysql.createConnection({
-        host: 'localhost',
-        user: 'ammar',
-        password: '123456',
-        database: 'sales'
-    });
+    const mysqlObject = mysql.createConnection(config);
 
     mysqlObject.connect();
     // connection.end();

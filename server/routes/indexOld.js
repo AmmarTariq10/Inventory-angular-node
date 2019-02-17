@@ -15,12 +15,7 @@ function setMsgBody(useBody, msgBody) {
 }
 
 module.exports = function (app) {
-    const mysqlObject = mysql.createConnection({
-        host: 'localhost',
-        user: 'haider',
-        password: 'Ahmed1234.!',
-        database: 'invsales'
-    });
+    const mysqlObject = mysql.createConnection();
 
     mysqlObject.connect();
     // connection.end();

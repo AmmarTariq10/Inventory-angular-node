@@ -6,26 +6,13 @@ const cors = require('cors');
 const apiport = 9090;
 
 app.use(bodyParser.json()); // added parsing functionality for json request body
-// JSON
-// {
-//      "key" : "value"   
-// }
-//
+
 app.use(bodyParser.urlencoded({extended: true})); // added extended parsing functionality for urlencoded request body
-// URLENCODED
-// GET:
-// http://localhost:9090/key=value
-//
-// ---------------------------------------
-// POST:
-// http://localhost:9090
-// requestbody:
-// key=value
 app.use(cors());
 
 require('./routes/sales')(app);
 require('./routes/inventory')(app);
 
 app.listen(apiport, () => {
-    console.log('API is live on ' + apiport);
+    console.log('The server is live on ' + apiport);
 });
